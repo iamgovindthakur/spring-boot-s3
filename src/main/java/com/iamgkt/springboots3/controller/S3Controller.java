@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +14,6 @@ import com.amazonaws.SdkClientException;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.iamgkt.springboots3.dto.Person;
 import com.iamgkt.springboots3.service.S3Service;
-import com.iamgkt.springboots3.service.S3ServiceImpl;
 
 @RestController
 public class S3Controller {
@@ -27,7 +27,7 @@ public class S3Controller {
 	}
 	
 	@GetMapping("/person{id}")
-	public Person getItem( Integer id) throws AmazonServiceException, SdkClientException, ClassNotFoundException, IOException
+	public Person getItem(@PathVariable Integer id) throws AmazonServiceException, SdkClientException, ClassNotFoundException, IOException
 	{
 		return s3Service.getPersonDetailFromS3(id);
 	}

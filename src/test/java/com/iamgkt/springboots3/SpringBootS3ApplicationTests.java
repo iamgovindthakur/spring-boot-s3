@@ -33,5 +33,9 @@ class SpringBootS3ApplicationTests {
 	public void deleteBucket() {
 		s3Service.deleteBucket("iamgkt-spring-s3");
 	}
+	@Test
+	public void createBucket() {
+		s3Service.createNewBucket("iamgkt-spring-s3");
+	}
 
 }
